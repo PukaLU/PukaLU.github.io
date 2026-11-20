@@ -1,0 +1,130 @@
+/* PukaLu Games: cer de noapte, aceleași culori ca jocurile.
+   Layout: o coloană centrată, secțiuni aerisite, carduri doar pentru jocuri. */
+:root {
+  --bg: #0b1030;
+  --bg-2: #121a48;
+  --line: #2a346e;
+  --ink: #eef0ff;
+  --muted: #a3a9d1;
+  --mint: #7cf3e0;
+  --gold: #ffd166;
+  --pink: #ff8ad8;
+  --violet: #9b8cff;
+  --display: 'Unbounded', 'Arial Black', system-ui, sans-serif;
+  --body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1px 1px at 12% 18%, #ffffff99 50%, transparent 51%),
+    radial-gradient(1px 1px at 72% 9%, #ffffff77 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 88% 32%, #ffffff88 50%, transparent 51%),
+    radial-gradient(1px 1px at 33% 61%, #ffffff66 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 56% 44%, #ffffff55 50%, transparent 51%),
+    radial-gradient(1px 1px at 8% 82%, #ffffff77 50%, transparent 51%),
+    radial-gradient(1px 1px at 93% 76%, #ffffff66 50%, transparent 51%),
+    radial-gradient(ellipse 80% 50% at 50% 0%, #1f2a72 0%, transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--ink);
+  font: 16px/1.6 var(--body);
+}
+a { color: var(--mint); }
+img { max-width: 100%; height: auto; display: block; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+/* limba: html[data-lang] arată doar textele potrivite */
+html[data-lang="en"] .ro, html[data-lang="ro"] .en { display: none !important; }
+
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* antet */
+.top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.brand img { width: 38px; height: 38px; }
+.brand b { font: 800 18px/1 var(--display); letter-spacing: -.01em; }
+.brand small { display: block; font: 800 9px/1 var(--body); letter-spacing: .22em; color: var(--mint); margin-top: 4px; }
+.nav { display: flex; align-items: center; gap: 18px; }
+.nav a { color: var(--muted); text-decoration: none; font-weight: 700; font-size: 14px; }
+.nav a:hover { color: var(--ink); }
+.lang { font: 800 12px/1 var(--body); letter-spacing: .08em; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; cursor: pointer; }
+@media (max-width: 560px) { .nav a { display: none; } }
+
+/* erou */
+.hero { padding-block: 72px 56px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
+.eyebrow { margin: 0 0 14px; font: 800 12px/1 var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--mint); }
+h1 { margin: 0; font: 800 clamp(36px, 7vw, 64px)/1.05 var(--display); letter-spacing: -.02em; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--gold); }
+.lead { margin: 20px 0 28px; font-size: 18px; color: var(--muted); max-width: 46ch; }
+.hero-art { justify-self: center; width: min(320px, 80vw); aspect-ratio: 1; position: relative; }
+.hero-art img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 40px #6a5cff55); animation: float 6s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-10px) rotate(-2deg); } }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; padding-block: 48px 32px; } .hero-art { order: -1; width: 180px; } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 22px; border-radius: 999px; font: 700 16px/1 var(--display); text-decoration: none; border: 0; cursor: pointer; }
+.btn-main { background: var(--mint); color: var(--bg); }
+.btn-ghost { color: var(--ink); border: 1px solid var(--line); background: color-mix(in srgb, var(--bg-2) 60%, transparent); }
+.btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* secțiuni */
+section { padding-block: 48px; }
+h2 { margin: 0 0 8px; font: 800 clamp(26px, 4vw, 36px)/1.15 var(--display); letter-spacing: -.01em; }
+.sub { margin: 0 0 28px; color: var(--muted); max-width: 60ch; }
+
+/* carduri de joc */
+.games { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+@media (max-width: 760px) { .games { grid-template-columns: 1fr; } }
+.game { display: flex; flex-direction: column; gap: 16px; padding: 22px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(180deg, color-mix(in srgb, var(--bg-2) 90%, transparent), color-mix(in srgb, var(--bg) 90%, transparent)); }
+.game-head { display: flex; align-items: center; gap: 14px; }
+.game-head img { width: 68px; height: 68px; border-radius: 18px; }
+.game-head h3 { margin: 0; font: 800 24px/1.1 var(--display); }
+.tag { display: inline-block; margin-top: 6px; font: 800 11px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.status { display: inline-flex; align-items: center; gap: 6px; font: 800 12px/1 var(--body); color: var(--gold); }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+.status.live { color: var(--mint); }
+.game p { margin: 0; color: var(--muted); }
+.feats { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.feats li { font: 700 13px/1 var(--body); padding: 8px 11px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.shots img { border-radius: 12px; aspect-ratio: 9 / 16; object-fit: cover; border: 1px solid var(--line); }
+.game .btns { margin-top: auto; }
+.game.soon { align-items: flex-start; justify-content: center; border-style: dashed; background: transparent; }
+.game.soon .mystery { width: 68px; height: 68px; border-radius: 18px; display: grid; place-items: center; font: 800 30px/1 var(--display); color: var(--violet); background: color-mix(in srgb, var(--violet) 14%, transparent); }
+
+/* despre, urmărește, contact */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
+.about p { margin: 0 0 14px; color: var(--muted); }
+.panel { padding: 22px; border: 1px solid var(--line); border-radius: 20px; }
+.panel h3 { margin: 0 0 12px; font: 800 18px/1.2 var(--display); }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.socials a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-weight: 700; }
+.socials svg { width: 18px; height: 18px; }
+.mail { font: 700 17px/1.3 var(--body); color: var(--mint); word-break: break-all; }
+
+/* pagina jocului */
+.gallery { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.gallery img { width: 200px; flex: none; border-radius: 16px; border: 1px solid var(--line); scroll-snap-align: start; }
+.steps { margin: 0; padding-left: 22px; color: var(--muted); }
+.steps li { margin-bottom: 8px; }
+.prose { max-width: 70ch; }
+.prose h2 { font-size: 22px; margin-top: 34px; }
+.prose p, .prose li { color: var(--muted); }
+
+footer { padding-block: 40px 56px; border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+footer a { color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { .hero-art img { animation: none; } html { scroll-behavior: auto; } }
+.prose h1 { font-size: clamp(26px, 5vw, 34px); }
+.prose .meta { margin-top: 6px; }
