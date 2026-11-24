@@ -27,6 +27,14 @@ window.SITE = {
     lang = l; root.dataset.lang = l; root.lang = l;
     try { localStorage.setItem('pukalu-lang', l); } catch (e) {}
     document.querySelectorAll('.lang').forEach(b => { b.textContent = l === 'ro' ? 'EN' : 'RO'; b.setAttribute('aria-label', l === 'ro' ? 'Switch to English' : 'Schimbă în română'); });
+    // trailerul: în limba aleasă, cu „În curând” sau „Gratuit în Google Play” pe final, după stadiul jocului
+    document.querySelectorAll('video[data-trailer]').forEach(v => {
+      const name = (window.SITE.orbita.live ? 'live-' : 'soon-') + l;
+      if (v.dataset.cur === name) return;
+      v.dataset.cur = name;
+      v.poster = `video/poster-${l}.jpg`;
+      v.src = `video/trailer-${name}.mp4`;
+    });
   };
   setLang(lang);
   document.addEventListener('click', e => { if (e.target.closest('.lang')) setLang(lang === 'ro' ? 'en' : 'ro'); });
