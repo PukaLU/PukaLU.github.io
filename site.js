@@ -7,7 +7,7 @@ window.SITE = {
   email: 'pukaluorbito@gmail.com',
   social: {
     tiktok: '',   // ex: 'https://www.tiktok.com/@pukalugames'
-    youtube: '',  // ex: 'https://www.youtube.com/@pukalugames'
+    youtube: 'https://www.youtube.com/@pukalugames',
   },
   orbita: {
     live: false,
